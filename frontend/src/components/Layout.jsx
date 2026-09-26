@@ -13,7 +13,7 @@ export function Encabezado() {
   const [abierto, setAbierto] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
-  useEffect(() => setAbierto(false), [location.pathname])
+  useEffect(() => { setAbierto(false) }, [location.pathname])
 
   const salir = () => {
     cerrarSesion()
@@ -179,7 +179,7 @@ function NotificacionesPuja() {
 
 export function Layout() {
   const location = useLocation()
-  useEffect(() => window.scrollTo(0, 0), [location.pathname])
+  useEffect(() => { window.scrollTo(0, 0) }, [location.pathname])
   return (
     <>
       <Encabezado />
