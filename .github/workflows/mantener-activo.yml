@@ -1,0 +1,15 @@
+# El plan gratuito de Render suspende el servidor tras 15 min sin uso
+# (la primera visita tardaría ~1 min). Este flujo lo mantiene activo
+# durante el periodo de evaluación. Puede desactivarlo desde la pestaña Actions.
+name: Mantener API activa
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS --max-time 90 https://autopuja-api-16857.onrender.com/api/health || true

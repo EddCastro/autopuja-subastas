@@ -1,0 +1,17 @@
+# Dependencias y compilados
+node_modules/
+dist/
+dist-*/
+
+# Variables de entorno (credenciales) — NUNCA subir
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Sistema / editores
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

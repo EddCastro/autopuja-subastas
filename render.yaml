@@ -1,0 +1,38 @@
+# Blueprint de Render para el BACKEND (API REST + Socket.IO).
+# El frontend (React) se publica en GitHub Pages con .github/workflows/pages.yml
+services:
+  - type: web
+    name: autopuja-api-16857
+    runtime: node
+    plan: free
+    region: ohio
+    rootDir: backend
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DB_SERVER
+        sync: false
+      - key: DB_PORT
+        value: "1433"
+      - key: DB_DATABASE
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_ENCRYPT
+        value: "true"
+      - key: DB_TRUST_SERVER_CERTIFICATE
+        value: "true"
+      - key: DB_TABLE_PREFIX
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://eddcastro.github.io,http://localhost:5173
